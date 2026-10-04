@@ -9,7 +9,7 @@ services:
       - key: ODDS_API_KEY
         value: ""
       - key: ADMIN_TOKEN
-        value: "123ADMINHPRONOS"
+        value: "289434rtuAopl,?yeinx"
       - key: REGIONS
         value: "eu"
       - key: MARKETS
