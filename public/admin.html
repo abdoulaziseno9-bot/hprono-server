@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HpronoIA Admin</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; padding: 30px; background: #020817; color: white; }
+      .box { background: #111827; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+      input, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #334155; margin-right: 8px; }
+      button { background: #2563eb; color: white; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>HpronoIA Admin</h1>
+    <div class="box">
+      <h3>Jeton admin</h3>
+      <input id="token" type="password" placeholder="x-admin-token" />
+      <button onclick="loadOverview()">Charger</button>
+    </div>
+    <div id="output" class="box"></div>
+
+    <script>
+      function loadOverview() {
+        const token = document.getElementById('token').value;
+        fetch('/api/admin/overview', {
+          headers: { 'x-admin-token': token }
+        })
+          .then(r => r.json())
+          .then(data => {
+            document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+          })
+          .catch(err => {
+            document.getElementById('output').innerHTML = '<p>Erreur de connexion.</p>';
+          });
+      }
+    </script>
+  </body>
+</html>

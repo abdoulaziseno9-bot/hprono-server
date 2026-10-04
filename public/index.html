@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HpronoIA</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: white;
+        margin: 0;
+        padding: 32px;
+      }
+      .container { max-width: 960px; margin: 0 auto; }
+      .card { background: #111827; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+      a { color: #7dd3fc; }
+      code { background: #1f2937; padding: 4px 8px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HpronoIA</h1>
+      <div class="card">
+        <p>Serveur de pronostics football et d'analyse de cotes.</p>
+        <p>API disponible sur <code>/api/status</code>, <code>/api/matches</code>, <code>/api/accuracy</code>.</p>
+        <p>Admin : <a href="/admin">/admin</a></p>
+      </div>
+      <div class="card" id="status"></div>
+    </div>
+    <script>
+      fetch('/api/status')
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('status').innerHTML = '<h3>État du serveur</h3>' +
+            '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        })
+        .catch(err => {
+          document.getElementById('status').innerHTML = '<p>Erreur de connexion API.</p>';
+        });
+    </script>
+  </body>
+</html>

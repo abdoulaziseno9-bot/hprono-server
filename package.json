@@ -1,0 +1,14 @@
+{
+  "name": "hprono-server",
+  "version": "1.0.0",
+  "description": "HpronoIA : pronostics football, scanner d'arbitrage et suivi de précision avec cotes et résultats en direct",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "mock": "MOCK=1 node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
