@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: hprono-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ODDS_API_KEY
+        value: ""
+      - key: ADMIN_TOKEN
+        value: "123ADMINHPRONOS"
+      - key: REGIONS
+        value: "eu"
+      - key: MARKETS
+        value: "h2h,totals"
+      - key: SPORTS
+        value: ""
+      - key: MAX_SPORTS
+        value: "3"
+      - key: REFRESH_MIN
+        value: "360"
+      - key: RESULT_POLL_MIN
+        value: "10"
+      - key: LIVE
+        value: "0"
+      - key: CREDIT_FLOOR
+        value: "25"
+      - key: TRUST_PROXY
+        value: "1"
+    disk:
+      name: data
+      mountPath: /opt/render/data
+      sizeGB: 1
